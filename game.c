@@ -75,7 +75,7 @@ int main()
             // 50% chance
             if (fight())
             {
-                printf("You won!\n");
+                printf("You survived!\n");
             }
             else
             {
@@ -109,5 +109,29 @@ int fight()
     int index = rand() % enemyAmt;
     ENTITY enemy = enemies[index];
     printf("%s jumped out!\n", enemy.name);
+    char choice;
+    int invalid;
+    do
+    {
+        printf("Will you [a]ttack, [d]efend or [r]un away?\n");
+        invalid = 0;
+        choice = getchar();
+        switch (choice)
+        {
+            case 'a':
+                printf("Attacking\n");
+                break;
+            case 'd':
+                printf("Defending\n");
+                break;
+            case 'r':
+                printf("Running away\n");
+                break;
+            default:
+                // invalid choice selected
+                invalid = 1;
+                break;
+        }
+    } while (invalid);
     return 1;
 }
